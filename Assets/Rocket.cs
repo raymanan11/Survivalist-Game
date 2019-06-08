@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] float rotThrust  = 85f;
+    [SerializeField] float mainThrust = 85f;
+
     Rigidbody rigidBody; // declare a variable rigidBody in order to access the RigidBody script
     AudioSource audioSource;
 
@@ -22,10 +25,23 @@ public class Rocket : MonoBehaviour
         Rotate();
     }
 
+    void OnCollisionEnter(Collision collision) {
+        switch (collision.gameObject.tag) { // determines the collisions based on the game tags
+            case "Friendly":
+                print("OK");
+                break;
+            case "Fuel":
+                print("FUEL");
+                break;
+            default:
+                print("DEAD");
+                break;
+        }
+    }
 
     private void Thrust() {
         if (Input.GetKey(KeyCode.Space)) {
-            rigidBody.AddRelativeForce(Vector3.up); // up is relative to the y arow because it's facing up
+            rigidBody.AddRelativeForce(Vector3.up * mainThrust); // up is relative to the y arow because it's facing up
             if (!audioSource.isPlaying) {
                 audioSource.Play();
             }
@@ -38,13 +54,13 @@ public class Rocket : MonoBehaviour
 
     private void Rotate() {
         rigidBody.freezeRotation = true; // this is before we control the rotation of rocket
-
+        float rotationFrame = rotThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.A)) {
-            transform.Rotate(Vector3.forward);
+            transform.Rotate(Vector3.forward * rotationFrame);
         }
 
         else if (Input.GetKey(KeyCode.D)) {
-            transform.Rotate(-Vector3.forward);
+            transform.Rotate(-Vector3.forward * rotationFrame);
         }
 
         rigidBody.freezeRotation = false; // physics is back
