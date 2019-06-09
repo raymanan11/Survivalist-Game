@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    [SerializeField] float rotThrust  = 85f;
-    [SerializeField] float mainThrust = 85f;
+    [SerializeField] float rotThrust  = 85f; // for the amount of rotation
+    [SerializeField] float mainThrust = 85f; // for the upward thrust
 
     Rigidbody rigidBody; // declare a variable rigidBody in order to access the RigidBody script
     AudioSource audioSource;
@@ -29,9 +29,6 @@ public class Rocket : MonoBehaviour
         switch (collision.gameObject.tag) { // determines the collisions based on the game tags
             case "Friendly":
                 print("OK");
-                break;
-            case "Fuel":
-                print("FUEL");
                 break;
             default:
                 print("DEAD");
