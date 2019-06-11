@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour
@@ -10,6 +8,9 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody; // declare a variable rigidBody in order to access the RigidBody script
     AudioSource audioSource;
+
+    enum State {Alive, Dying, Transcending};
+    State state = State.Alive;
 
     // Start is called before the first frame update
     void Start() {
@@ -21,20 +22,40 @@ public class Rocket : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        Thrust();
-        Rotate();
+        if (state == State.Alive) {
+            Thrust();
+            Rotate();
+        }
     }
 
     void OnCollisionEnter(Collision collision) {
+        if (state != State.Alive) {
+            return;
+        }
+
         switch (collision.gameObject.tag) { // determines the collisions based on the game tags
             case "Friendly":
-                print("OK");
                 break;
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextLevel", 1f); // load the next scene after one second
+                break;
+
             default:
-                print("DEAD");
+                state = State.Dying;
+                Invoke("LoadFirstLevel", 1f);
                 break;
         }
     }
+
+    private void LoadNextLevel() {
+        SceneManager.LoadScene(1);
+    }
+
+    private void LoadFirstLevel() {
+        SceneManager.LoadScene(0);
+    }
+
 
     private void Thrust() {
         if (Input.GetKey(KeyCode.Space)) {
@@ -43,7 +64,6 @@ public class Rocket : MonoBehaviour
                 audioSource.Play();
             }
         }
-
         else {
             audioSource.Stop();
         }
