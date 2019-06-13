@@ -17,7 +17,7 @@ public class Rocket : MonoBehaviour {
     Rigidbody rigidBody; // declare a variable rigidBody in order to access the RigidBody script
     AudioSource audioSource;
 
-    enum State {Alive, Dying, Transcending};
+    enum State {Alive, Dying, Pass};
     State state = State.Alive;
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class Rocket : MonoBehaviour {
     void Update() {
         if (state == State.Alive) { // if rocket hits obstacle, stops any thrusting or user controls but if rocket hasn't hit anything then controls are normal
             ReactThrustInput();
-            ReactRotatInput();
+            ReactRotateInput();
         }
     }
 
@@ -48,7 +48,7 @@ public class Rocket : MonoBehaviour {
 
     private void ApplyThrust() {
 
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust); // deals with the upward thrust of rocket and audio
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust ); // deals with the upward thrust of rocket and audio
         if (!audioSource.isPlaying) {
             audioSource.PlayOneShot(mainEngine);
         }
@@ -56,7 +56,7 @@ public class Rocket : MonoBehaviour {
 
     }
 
-    private void ReactRotatInput() {
+    private void ReactRotateInput() {
         rigidBody.freezeRotation = true; // this is before we control the rotation of rocket
         float rotationFrame = rotThrust * Time.deltaTime;
         if (Input.GetKey(KeyCode.A)) {
@@ -88,7 +88,7 @@ public class Rocket : MonoBehaviour {
     }
 
     private void SuccessSequence() {
-        state = State.Transcending;
+        state = State.Pass;
         audioSource.Stop();
         audioSource.PlayOneShot(levelPass);
         levelPassParticles.Play();
@@ -105,6 +105,7 @@ public class Rocket : MonoBehaviour {
 
     private void LoadNextLevel() {
         SceneManager.LoadScene(1); // this is how to switch to next level
+        SceneManager.LoadScene(2);
     }
 
     private void LoadFirstLevel() { // this is to load first level again if you die
