@@ -521,6 +521,16 @@ PrefabInstance:
       propertyPath: movementRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3422199733658177797, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: period
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199734361625101, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: period
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3422199733918514516, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: movementRange
@@ -531,10 +541,25 @@ PrefabInstance:
       propertyPath: movementVector.y
       value: -9
       objectReference: {fileID: 0}
+    - target: {fileID: 3422199733918514516, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: period
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3422199733575457423, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: movementVector.y
       value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199733575457423, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: period
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199734543338587, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: period
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c72a160056a4c48a0af9281a9957d9, type: 3}

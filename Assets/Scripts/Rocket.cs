@@ -4,12 +4,13 @@ using UnityEngine;
 public class Rocket : MonoBehaviour {
     [SerializeField] float rotThrust = 85f; // for the amount of rotation
     [SerializeField] float mainThrust = 85f; // for the upward thrust
+    [SerializeField] float levelLoadDelay;
 
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip levelPass;
 
-    [SerializeField] ParticleSystem mainEngineParticles; // the built in Unity ParticleSystem allows put any particle in the lever and use the .Play to show effect
+    [SerializeField] ParticleSystem mainEngineParticles; // the built in Unity ParticleSystem allows user to put any particle in the lever and use the .Play to show effect
     [SerializeField] ParticleSystem explosionParticles;
     [SerializeField] ParticleSystem levelPassParticles;
 
@@ -48,9 +49,9 @@ public class Rocket : MonoBehaviour {
 
     private void ApplyThrust() {
 
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust ); // deals with the upward thrust of rocket and audio
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime); // deals with the upward thrust of rocket and audio
         if (!audioSource.isPlaying) {
-            audioSource.PlayOneShot(mainEngine);
+            audioSource.PlayOneShot(mainEngine); // allows user to choose audio in Unity as well as deal with multiple audio clips
         }
         mainEngineParticles.Play(); // plays thrusting particles
 
@@ -90,22 +91,21 @@ public class Rocket : MonoBehaviour {
     private void SuccessSequence() {
         state = State.Pass;
         audioSource.Stop();
-        audioSource.PlayOneShot(levelPass);
+        audioSource.PlayOneShot(levelPass); // allows user to choose audio in Unity as well as deal with multiple audio clips
         levelPassParticles.Play();
-        Invoke("LoadNextLevel", 1.5f); // load the next scene after one second
+        Invoke("LoadNextLevel", levelLoadDelay); // load the next scene after one second
     }
 
     private void DeathSequence() {
         state = State.Dying;
         audioSource.Stop();
-        audioSource.PlayOneShot(deathSound);
+        audioSource.PlayOneShot(deathSound); // allows user to choose audio in Unity as well as deal with multiple audio clips
         explosionParticles.Play();
-        Invoke("LoadFirstLevel", 1.5f);
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void LoadNextLevel() {
         SceneManager.LoadScene(1); // this is how to switch to next level
-        SceneManager.LoadScene(2);
     }
 
     private void LoadFirstLevel() { // this is to load first level again if you die
