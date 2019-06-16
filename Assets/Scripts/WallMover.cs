@@ -23,7 +23,7 @@ public class WallMover : MonoBehaviour {
         if (period <= Mathf.Epsilon) { // if period == 0 the wall movement will not move
             return; 
         }
-        float cycles = Time.time / period;
+        float cycles = Time.time / period; // Time.time is what makes the sin a random number which causes
         const float tau = Mathf.PI * 2; // about 6.38 or 2 PI
         float SinWave = Mathf.Sin(cycles * tau); // goes from -1 to 1
         
