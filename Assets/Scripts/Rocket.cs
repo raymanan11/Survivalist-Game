@@ -101,6 +101,7 @@ public class Rocket : MonoBehaviour {
         audioSource.Stop();
         audioSource.PlayOneShot(deathSound); // allows user to choose audio in Unity as well as deal with multiple audio clips
         explosionParticles.Play();
+        mainEngineParticles.Stop();
         Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
