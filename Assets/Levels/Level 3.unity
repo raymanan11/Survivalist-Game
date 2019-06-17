@@ -519,12 +519,22 @@ PrefabInstance:
     - target: {fileID: 3422199733658177797, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: period
-      value: 1.2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199733658177797, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: movementVector.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3422199734361625101, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: period
-      value: 1.6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199734361625101, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: movementVector.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3422199733918514516, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
@@ -534,27 +544,32 @@ PrefabInstance:
     - target: {fileID: 3422199733918514516, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: movementVector.y
-      value: -9
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 3422199733918514516, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: period
-      value: 1.8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3422199733575457423, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: movementVector.y
-      value: -9
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 3422199733575457423, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: period
-      value: 1.4
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 3422199734543338587, guid: e9c72a160056a4c48a0af9281a9957d9,
         type: 3}
       propertyPath: period
-      value: 2
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422199734543338587, guid: e9c72a160056a4c48a0af9281a9957d9,
+        type: 3}
+      propertyPath: movementVector.y
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9c72a160056a4c48a0af9281a9957d9, type: 3}

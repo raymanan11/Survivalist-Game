@@ -1,6 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
+
 public class Rocket : MonoBehaviour {
     [SerializeField] float rotThrust = 85f; // for the amount of rotation
     [SerializeField] float mainThrust = 85f; // for the upward thrust
@@ -117,7 +118,7 @@ public class Rocket : MonoBehaviour {
         audioSource.PlayOneShot(deathSound); // allows user to choose audio in Unity as well as deal with multiple audio clips
         explosionParticles.Play();
         mainEngineParticles.Stop();
-        Invoke("LoadFirstLevel", levelLoadDelay);
+        Invoke("LoadSameLevel", levelLoadDelay);
     }
 
     private void LoadNextLevel() {
@@ -130,8 +131,9 @@ public class Rocket : MonoBehaviour {
         SceneManager.LoadScene(nextSceneIndex); // this is how to switch to next level
     }
 
-    private void LoadFirstLevel() { // this is to load first level again if you die
-        SceneManager.LoadScene(0);
+    private void LoadSameLevel() { // this is to load first level again if you die
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Single);
     }
 
 }
