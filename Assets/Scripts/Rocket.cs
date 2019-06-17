@@ -20,6 +20,7 @@ public class Rocket : MonoBehaviour {
 
     enum State {Alive, Dying, Pass};
     State state = State.Alive;
+    bool collisionsDisabled = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -34,7 +35,21 @@ public class Rocket : MonoBehaviour {
             ReactThrustInput();
             ReactRotateInput();
         }
+        if (Debug.isDebugBuild) { // if development build is on then debug keys work if not then they don't work
+            DebugKeys();          // 
+        }
+       
     }
+
+    private void DebugKeys() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            LoadNextLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.C)) {
+            collisionsDisabled = !collisionsDisabled;
+        }
+    }
+
 
     private void ReactThrustInput() {
         if (Input.GetKey(KeyCode.Space)) {
@@ -72,7 +87,7 @@ public class Rocket : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) { // deals with what happens when rocket collide with objects
-        if (state != State.Alive) {
+        if (state != State.Alive || collisionsDisabled) { // if state is not alive and collisions are disabled then ignore collisions
             return;
         }
         switch (collision.gameObject.tag) {
@@ -106,7 +121,13 @@ public class Rocket : MonoBehaviour {
     }
 
     private void LoadNextLevel() {
-        SceneManager.LoadScene(1); // this is how to switch to next level
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;  // tells you what index level you are on
+        int nextSceneIndex = currentSceneIndex + 1;
+        int lastLevelIndex = SceneManager.sceneCountInBuildSettings;
+        if (nextSceneIndex == lastLevelIndex) {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex); // this is how to switch to next level
     }
 
     private void LoadFirstLevel() { // this is to load first level again if you die

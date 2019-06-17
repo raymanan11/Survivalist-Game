@@ -19,7 +19,6 @@ public class WallMover : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        print(Time.time);
         if (period <= Mathf.Epsilon) { // if period == 0 the wall movement will not move
             return; 
         }
