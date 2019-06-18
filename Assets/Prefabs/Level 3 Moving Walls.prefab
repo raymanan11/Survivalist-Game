@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369e27aeac7dac43abafdf47e886dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 10, z: 0}
+  movementVector: {x: 0, y: 28, z: 0}
+  period: 4
 --- !u!114 &3422199733918514516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25,7 +26,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369e27aeac7dac43abafdf47e886dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 9, z: 0}
+  movementVector: {x: 0, y: -18, z: 0}
+  period: 5
 --- !u!114 &3422199734543338587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,7 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369e27aeac7dac43abafdf47e886dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 10, z: 0}
+  movementVector: {x: 0, y: 28, z: 0}
+  period: 4.5
 --- !u!114 &3422199733658177797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +54,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369e27aeac7dac43abafdf47e886dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 10, z: 0}
+  movementVector: {x: 0, y: 28, z: 0}
+  period: 3
 --- !u!114 &3422199733575457423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0369e27aeac7dac43abafdf47e886dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 9, z: 0}
+  movementVector: {x: 0, y: -18, z: 0}
+  period: 3.5
 --- !u!1 &4580434425361222554
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8120409810900162111}
   m_Layer: 0
-  m_Name: Moving Walls
+  m_Name: Level 3 Moving Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

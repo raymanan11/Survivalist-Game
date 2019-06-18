@@ -436,7 +436,7 @@ MonoBehaviour:
   rotThrust: 200
   mainThrust: 1700
   levelLoadDelay: 1.5
-  mainEngine: {fileID: 8300000, guid: 657713f11b400ef4fbde437b945c5a25, type: 3}
+  mainEngine: {fileID: 8300000, guid: a7c580e145fc0b54db69e38c9455cd00, type: 3}
   deathSound: {fileID: 8300000, guid: f5c909bb60a407b47b289921eaf2784f, type: 3}
   levelPass: {fileID: 8300000, guid: 70ed08a172bc00d48b6c962a8cb6573f, type: 3}
   mainEngineParticles: {fileID: 2035489609870051631}
