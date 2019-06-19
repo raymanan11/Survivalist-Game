@@ -1,0 +1,8 @@
+http://localhost:61390/
+
+SPACE = Thrust
+A = Left
+D = Right
+
+OBJECTIVE: Avoid the obstacles and land safely on the landing pad to move onto the next level!
+Total of 6 levels!
